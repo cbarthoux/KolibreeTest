@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <title>Kolibree Test</title>
+		<link rel='stylesheet' href="/static/dentistsApp/css/bootstrap.min.css"/>
+    <link rel='stylesheet' href="/static/dentistsApp/css/styles.css"/>
+  </head>
+  <body>
+		<div class="container bs-docs-container">
+			<header>
+			  <ul class="nav nav-tabs">
+			    <li id="listMenu" role="presentation"><a href="/dentistsApp">List</a></li>
+			    <li id="addUserMenu" role="presentation"><a href="/dentistsApp/create-user">Add user</a></li>
+			    <li id="addDentistMenu" role="presentation"><a href="/dentistsApp/create-dentist">Add dentist</a></li>
+			  </ul>
+			</header>
+      <h3>Dentist information</h3>
+      <table class="table">
+        <tr>
+          <td><strong>Last name </strong></td>
+          <td>{{ dentist.last_name }}</td>
+        </tr>
+        <tr>
+          <td><strong>First name </strong></td>
+          <td>{{ dentist.first_name }}</td>
+        </tr>
+        <tr>
+          <td><strong>Email </strong></td>
+          <td>{{ dentist.email }}</td>
+        </tr>
+        <tr>
+          <td><strong>License number </strong></td>
+          <td>{{ dentist.license_number }}</td>
+        </tr>
+      </table>
+      <a href="patients"><button class="btn btn-primary">Get patients information</button></a>
+    </div>
+  </body>
+</html>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>

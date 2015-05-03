@@ -1,0 +1,12 @@
+.glyphicon{
+  top: 0!important;
+}
+
+.input-group{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+button{
+  float: right;
+}

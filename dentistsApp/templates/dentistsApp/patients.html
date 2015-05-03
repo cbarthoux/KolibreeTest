@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <title>Kolibree Test</title>
+		<link rel='stylesheet' href="/static/dentistsApp/css/bootstrap.min.css"/>
+    <link rel='stylesheet' href="/static/dentistsApp/css/styles.css"/>
+  </head>
+  <body>
+		<div class="container bs-docs-container">
+			<header>
+			  <ul class="nav nav-tabs">
+			    <li id="listMenu" role="presentation"><a href="/dentistsApp">List</a></li>
+			    <li id="addUserMenu" role="presentation"><a href="/dentistsApp/create-user">Add user</a></li>
+			    <li id="addDentistMenu" role="presentation"><a href="/dentistsApp/create-dentist">Add dentist</a></li>
+			  </ul>
+			</header>
+      <h3>{{ dentist }}'s patients</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Last name</th>
+            <th>First name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+          <tbody>
+            {% for user in users_list %}
+            <tr>
+              <td><a href="user/{{user.id}}">{{ user.last_name }}</a></td>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>

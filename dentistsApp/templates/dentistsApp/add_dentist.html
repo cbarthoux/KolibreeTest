@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <title>Kolibree Test</title>
+		<link rel='stylesheet' href="/static/dentistsApp/css/bootstrap.min.css"/>
+    <link rel='stylesheet' href="/static/dentistsApp/css/styles.css"/>
+  </head>
+  <body>
+		<div class="container bs-docs-container">
+			<header>
+			  <ul class="nav nav-tabs">
+			    <li id="listMenu" role="presentation"><a href="/dentistsApp">List</a></li>
+			    <li id="addUserMenu" role="presentation"><a href="/dentistsApp/create-user">Add user</a></li>
+			    <li id="addDentistMenu" role="presentation"><a href="/dentistsApp/create-dentist">Add dentist</a></li>
+			  </ul>
+			</header>
+			<h3>Add dentist</h3>
+      <form role="form" action="" method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <!-- <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-user"></span>
+          <input type="text" class="form-control" placeholder="First name" name="first_name">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-user"></span>
+          <input type="text" class="form-control" placeholder="Last name" name="last_name">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+          <input type="text" class="form-control" placeholder="Email" name="email">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-tag"></span>
+          <input type="text" class="form-control" placeholder="License number" name="license_number">
+        </div> -->
+        <button type="submit" class="btn btn-primary" id="sendButton">Add</button>
+      </form>
+    </div>
+  </body>
+</html>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+  $('.nav li').removeClass('active');
+  $('#addDentistMenu').addClass('active');
+</script>
