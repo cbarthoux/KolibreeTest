@@ -8,14 +8,7 @@
   </head>
   <body>
 		<div class="container bs-docs-container">
-			<header>
-			  <ul class="nav nav-tabs">
-			    <li id="listMenu" role="presentation"><a href="/dentistsApp">List</a></li>
-			    <li id="addUserMenu" role="presentation"><a href="/dentistsApp/create-user">Add user</a></li>
-			    <li id="addDentistMenu" role="presentation"><a href="/dentistsApp/create-dentist">Add dentist</a></li>
-					<li id="matchMenu" role="presentation"><a href="/dentistsApp/match">Match</a></li>
-			  </ul>
-			</header>
+			{% include "dentistsApp/header.html" %}
       <h3>User information</h3>
       <table class="table">
         <tr>
@@ -33,7 +26,7 @@
         <tr>
           <td><strong>Dentist </strong></td>
           {% if user.dentist %}
-            <td><a href="/dentistsApp/dentist/{{ user.dentist.id }}">{{ user.dentist }}</a></td>
+            <td><a href="/dentist/{{ user.dentist.id }}">{{ user.dentist }}</a></td>
           {% else %}
             <td>No dentist yet</td>
           {% endif %}

@@ -3,7 +3,11 @@
   margin-bottom: 10px;
 }
 
-button{
+.btn.btn-primary{
   float: right;
   margin-top: 10px;
+}
+
+.formUpdateDentist{
+  display: inline-block;
 }

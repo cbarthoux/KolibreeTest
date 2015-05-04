@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <title>Kolibree Test</title>
+		<link rel='stylesheet' href="/static/dentistsApp/css/bootstrap.min.css"/>
+    <link rel='stylesheet' href="/static/dentistsApp/css/styles.css"/>
+  </head>
+  <body>
+		<div class="container bs-docs-container">
+			{% include "dentistsApp/header.html" %}
+      {% if user.dentist.id == dentist.id %}
+        <h3>User information</h3>
+        <h5>The result match between user {{ user }} and dentist {{ dentist }}</h5>
+        <table class="table">
+          <tr>
+            <td><strong>Last name </strong></td>
+            <td>{{ user.last_name }}</td>
+          </tr>
+          <tr>
+            <td><strong>First name </strong></td>
+            <td>{{ user.first_name }}</td>
+          </tr>
+          <tr>
+            <td><strong>Email </strong></td>
+            <td>{{ user.email }}</td>
+          </tr>
+          <tr>
+            <td><strong>Dentist </strong></td>
+            {% if user.dentist %}
+              <td><a href="/dentist/{{ user.dentist.id }}">{{ user.dentist }}</a></td>
+            {% else %}
+              <td>No dentist yet</td>
+            {% endif %}
+          </tr>
+        </table>
+      {% else %}
+        <h3>No result</h3>
+        {% if user.dentist == null %}
+          <h5>
+            <a href="/user/{{ user.id }}">{{ user }} </a>
+            <span>has no dentist.</span>
+          </h5>
+          <h5>
+            <span>Would you like to add </span>
+            <a href="/dentist/{{ dentist.id }}">{{ dentist }}</a>
+            <span> as </span>
+            <a href="/user/{{ user.id }}">{{ user }} </a>
+            <span>dentist ?</span>
+          </h5>
+          <form class="formUpdateDentist" role="form" action="" method="POST">{% csrf_token %}
+            <button type="submit" class="btn btn-success">Yes</button>
+          </form>
+          <a href="/match" class="btn btn-danger">No</a>
+        {% else %}
+          <h5>
+            <span>The dentist of </span>
+            <a href="/user/{{ user.id }}">{{ user }} </a>
+            <span>is </span>
+            <a href="/dentist/{{ user.dentist.id }}">{{ user.dentist }}</a>
+            <span>.</span>
+          </h5>
+          <h5>
+            <span>Would you like to change it by </span>
+            <a href="/dentist/{{ dentist.id }}">{{ dentist }}</a>
+            <span> ?</span>
+          </h5>
+          <form class="formUpdateDentist" role="form" action="" method="POST">{% csrf_token %}
+            <button type="submit" class="btn btn-success">Yes</button>
+          </form>
+          <a href="/match" class="btn btn-danger">No</a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </body>
+</html>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+  $('.nav li').removeClass('active');
+  $('#matchMenu').addClass('active');
+</script>
