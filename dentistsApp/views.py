@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from .models import User
 from .models import Dentist
-from dentistsApp.forms import UserForm, DentistForm
+from dentistsApp.forms import UserForm, DentistForm, MatchForm
 import logging, logging.config
 import sys
 
@@ -19,17 +19,15 @@ def create_user(request):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
-            dentist = form.cleaned_data['dentist']
-            post = User.objects.create(first_name=first_name, last_name=last_name, email=email, dentist=dentist)
-            return redirect('/dentistsApp/index.html') # Redirect after POST
+            selected_dentist = form.cleaned_data['dentist']
+            post = User.objects.create(first_name=first_name, last_name=last_name, email=email, dentist=selected_dentist)
+            return HttpResponseRedirect('/dentistsApp') # Redirect after POST
     else:
         form = UserForm() # An unbound form
-    dentist_list = Dentist.objects.all()
-    context = {'dentists_list': dentist_list}
-    return render(request, 'dentistsApp/add_user.html', context
-    , {
-        'form': form,
-    }
+    return render(request, 'dentistsApp/add_user.html'
+        , {
+            'form': form,
+        }
     )
 
 def create_dentist(request):
@@ -64,3 +62,16 @@ def patients(request, dentist_id):
     users_list = User.objects.filter(dentist = dentist)
     context = {'users_list': users_list, 'dentist': dentist}
     return render(request, 'dentistsApp/patients.html', context)
+
+def match(request):
+    if request.method == 'POST':
+        form = MatchForm(request.POST)
+        user = form.cleaned_data['user']
+        dentist = form.cleaned_data['dentist']
+    else:
+        form = MatchForm() # An unbound form
+    return render(request, 'dentistsApp/match.html'
+        , {
+            'form': form,
+        }
+    )

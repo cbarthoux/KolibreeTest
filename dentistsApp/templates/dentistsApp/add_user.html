@@ -13,33 +13,13 @@
 			    <li id="listMenu" role="presentation"><a href="/dentistsApp">List</a></li>
 			    <li id="addUserMenu" role="presentation"><a href="/dentistsApp/create-user">Add user</a></li>
 			    <li id="addDentistMenu" role="presentation"><a href="/dentistsApp/create-dentist">Add dentist</a></li>
+					<li id="matchMenu" role="presentation"><a href="/dentistsApp/match">Match</a></li>
 			  </ul>
 			</header>
 			<h3>Add user</h3>
-      <form role="form" action="add_user.html" method="POST">
-        <div class="input-group">
-          <span class="input-group-addon glyphicon glyphicon-user"></span>
-          <input type="text" class="form-control" placeholder="First name" name="first_name">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon glyphicon glyphicon-user"></span>
-          <input type="text" class="form-control" placeholder="Last name" name="last_name">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon glyphicon glyphicon-envelope"></span>
-          <input type="text" class="form-control" placeholder="Email" name="email">
-        </div>
-        <div class="form-group">
-          {% if dentists_list %}
-          <label for="sel1">Dentist</label>
-          <select  class="form-control" name="dentist">
-            {% for dentist in dentists_list %}
-              <option>{{ dentist }}</option>
-            {% endfor %}
-            </select>
-          {% endif %}
-        </div>
-        <button type="submit" class="btn btn-primary" id="sendButton">Add</button>
+      <form role="form" action="" method="POST">{% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
   </body>

@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^user/(?P<user_id>[0-9]+)/$', views.user, name='user'),
     url(r'^dentist/(?P<dentist_id>[0-9]+)/$', views.dentist, name='dentist'),
     url(r'^dentist/(?P<dentist_id>[0-9]+)/patients/$', views.patients, name='patients'),
+    url(r'^match/$', views.match, name='match'),
 ]

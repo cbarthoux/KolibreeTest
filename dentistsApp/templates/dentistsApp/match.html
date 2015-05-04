@@ -16,32 +16,18 @@
 					<li id="matchMenu" role="presentation"><a href="/dentistsApp/match">Match</a></li>
 			  </ul>
 			</header>
-      <h3>User information</h3>
-      <table class="table">
-        <tr>
-          <td><strong>Last name </strong></td>
-          <td>{{ user.last_name }}</td>
-        </tr>
-        <tr>
-          <td><strong>First name </strong></td>
-          <td>{{ user.first_name }}</td>
-        </tr>
-        <tr>
-          <td><strong>Email </strong></td>
-          <td>{{ user.email }}</td>
-        </tr>
-        <tr>
-          <td><strong>Dentist </strong></td>
-          {% if user.dentist %}
-            <td><a href="/dentistsApp/dentist/{{ user.dentist.id }}">{{ user.dentist }}</a></td>
-          {% else %}
-            <td>No dentist yet</td>
-          {% endif %}
-        </tr>
-      </table>
+			<h3>Match</h3>
+      <form role="form" action="" method="POST">{% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit" class="btn btn-primary">Match</button>
+      </form>
     </div>
   </body>
 </html>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+  $('.nav li').removeClass('active');
+  $('#matchMenu').addClass('active');
+</script>
